@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaibhav Gupta - Software Engineer & SRE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #05070d;
+            --bg-secondary: #0f1117;
+            --bg-tertiary: #1a1f2e;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1a5;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #a855f7;
+            --accent-green: #22c55e;
+            --border-color: #27272a;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .gradient-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 35%),
+                        radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.06) 0%, transparent 35%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 0.25em;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .contact-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(24, 24, 27, 0.7);
+            color: var(--text-primary);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            border-color: var(--accent-cyan);
+            color: rgba(56, 189, 248, 0.8);
+        }
+
+        main {
+            padding: 60px 20px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 40px;
+            margin-bottom: 80px;
+            align-items: start;
+        }
+
+        .hero-content {
+            space: 30px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: rgba(56, 189, 248, 0.8);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -0.8px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: rgba(244, 244, 245, 0.9);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            background-color: transparent;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+        }
+
+        .sidebar {
+            border: 1px solid var(--border-color);
+            background: linear-gradient(to bottom, rgba(24, 24, 27, 0.6), rgba(9, 9, 11, 0.8));
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 0 80px rgba(56, 189, 248, 0.06);
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .skill-tag {
+            padding: 8px 12px;
+            background-color: rgba(63, 63, 70, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .stat {
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat:nth-child(odd) {
+            border-bottom: none;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: -0.6px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .highlight-card {
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(24, 24, 27, 0.3);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--accent-cyan);
+            background-color: rgba(24, 24, 27, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-background"></div>
+
+    <div class="container">
+        <header>
+            <span class="logo">VAIBHAV GUPTA</span>
+            <a href="mailto:guptavaibhav18197@gmail.com" class="contact-btn">Contact</a>
+        </header>
+
+        <main>
+            <section class="hero animate-fade-in">
+                <div class="hero-content">
+                    <span class="badge">Site Reliability Engineer at Google</span>
+                    <h1>Enterprise-grade systems. Edgy product instincts.</h1>
+                    <p class="description">
+                        I build and scale resilient distributed platforms that power critical operations. From secure infrastructure pipelines to large-scale workload migrations, I combine engineering depth with execution speed to move ambitious systems into production.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="https://vaibhav-site.vercel.app" class="btn btn-primary">View Full Site</a>
+                        <a href="https://www.linkedin.com/in/oblivious/" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+                    </div>
+                </div>
+
+                <aside class="sidebar">
+                    <p class="sidebar-title">Core Stack</p>
+                    <div class="skills">
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Distributed Systems</span>
+                        <span class="skill-tag">SRE</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years at Google</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1000s</div>
+                            <div class="stat-label">Workloads Impacted</div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="section">
+                <h2>Career Highlights</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <p>Designed a novel trusted pipeline for Google corporate containers with strong provenance and isolation.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p>Extended Google rollout enforcement across corporate clusters, impacting thousands of VMs.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p>Spearheaded a Kubernetes and KubeVirt-based provisioning platform migrating thousands of workloads.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p>Mentored engineers and led initiatives spanning open source, research, and student impact at scale.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>Explore the Full Experience</h2>
+                <p>Visit the complete website to see my detailed career journey, publications, leadership initiatives, and interactive digital twin chat about my expertise and background.</p>
+                <a href="https://vaibhav-site.vercel.app" class="btn btn-primary">View Full Site →</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 Vaibhav Gupta. Built with Next.js. Designed to blend enterprise clarity with an edgy visual identity.</p>
+        </footer>
+    </div>
+</body>
+</html>
